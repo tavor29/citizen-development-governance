@@ -1,0 +1,102 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Framework doc — Citizen Development Governance Model">
+	<article class="doc">
+		<h1>The citizen development governance framework</h1>
+		<p class="lede">
+			How a tool moves from an employee's side project to something the organization can rely
+			on, and who's accountable for it at each step.
+		</p>
+
+		<h2>The four stages</h2>
+
+		<h3>Idea</h3>
+		<p>
+			Someone has a plan for a tool or automation that solves a real, recurring problem. No
+			working code yet, or only a rough sketch. Logging it here makes it visible instead of
+			living only in one person's head or a chat thread.
+		</p>
+		<p class="trigger">Advances when: a working prototype exists, even a rough one.</p>
+
+		<h3>Prototype</h3>
+		<p>
+			The tool works, at least in a limited way, and its builder (or a small group) is actually
+			using it. Nothing depends on it yet, if it breaks, that's expected and fine.
+		</p>
+		<p class="trigger">
+			Advances when: at least one person besides the original builder is using it regularly, and
+			it hasn't caused a problem.
+		</p>
+
+		<h3>MVP</h3>
+		<p>
+			Multiple people rely on it for real work. It does the job, but has known gaps or rough
+			edges the team has accepted for now.
+		</p>
+		<p class="trigger">
+			Advances when: it's run reliably for a stretch without the original builder actively
+			keeping it alive, <em>and</em> a maintaining team (not just the original builder) has been
+			assigned.
+		</p>
+
+		<h3>Production</h3>
+		<p>
+			Fully adopted and documented. A team, not an individual, is accountable for keeping it
+			running, independent of whether whoever originally built it is still around.
+		</p>
+
+		<h2>What triggers a stage change</h2>
+		<ul>
+			<li>
+				Moving to MVP or Production always requires an explicit maintaining team, assigned on
+				the tracker, not just the person who happened to build it.
+			</li>
+			<li>
+				Movement isn't only forward: a Production tool that's gone quiet (see the live
+				last-commit signal on the tracker) can be flagged for re-review instead of silently
+				rotting with nobody watching it.
+			</li>
+		</ul>
+
+		<h2>Maintenance ownership</h2>
+		<p>
+			Every tool at MVP or Production has a maintaining team attached and visible on the
+			tracker. That team owns keeping it running, they don't need to have built it originally,
+			that's the whole point: ownership survives a departure.
+		</p>
+
+		<h2>What this framework doesn't do</h2>
+		<p>
+			This tracks ownership and maintenance signals, but it doesn't enforce anything. An
+			organization that wanted hard gates (blocking a tool from advancing stages without
+			sign-off) would need to layer that on top.
+		</p>
+	</article>
+</Layout>
+
+<style>
+	.doc {
+		max-width: 42rem;
+	}
+
+	.lede {
+		color: var(--color-text-muted);
+		font-size: var(--text-lg);
+	}
+
+	.doc h2 {
+		margin-top: var(--space-5);
+	}
+
+	.doc h3 {
+		margin-top: var(--space-4);
+		font-size: var(--text-base);
+	}
+
+	.trigger {
+		font-size: var(--text-sm);
+		color: var(--color-text-muted);
+	}
+</style>

@@ -1,0 +1,79 @@
+---
+import type { SeededTool } from '../data/meridian-dynamics';
+import type { StageAssignment } from '../data/stage-tracker';
+
+interface Props {
+	tool: SeededTool;
+	assignment: StageAssignment;
+	maintainerName: string;
+}
+
+const { tool, assignment, maintainerName } = Astro.props;
+---
+
+<article
+	class="tool-card"
+	data-repo-owner={assignment.repo?.owner}
+	data-repo-name={assignment.repo?.name}
+>
+	<div class="tool-card__head">
+		<h3>{tool.name}</h3>
+		<span class="category">{tool.category}</span>
+	</div>
+	<p class="desc">{tool.description}</p>
+	<p class="owner">Maintained by <strong>{maintainerName}</strong></p>
+	{
+		assignment.repo && (
+			<p class="health" data-health>
+				Checking GitHub…
+			</p>
+		)
+	}
+</article>
+
+<style>
+	.tool-card {
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		padding: var(--space-3);
+		background: var(--color-bg);
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-1);
+	}
+
+	.tool-card__head {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: var(--space-2);
+	}
+
+	.tool-card__head h3 {
+		font-size: var(--text-base);
+		margin: 0;
+	}
+
+	.category {
+		font-size: var(--text-xs);
+		text-transform: uppercase;
+		color: var(--color-text-muted);
+	}
+
+	.desc {
+		font-size: var(--text-sm);
+		color: var(--color-text-muted);
+		margin: 0;
+	}
+
+	.owner {
+		font-size: var(--text-sm);
+		margin: 0;
+	}
+
+	.health {
+		font-size: var(--text-xs);
+		color: var(--color-accent);
+		margin: var(--space-1) 0 0;
+	}
+</style>

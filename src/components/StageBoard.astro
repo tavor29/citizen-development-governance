@@ -1,0 +1,54 @@
+---
+import { tools, teams } from '../data/meridian-dynamics';
+import { stages, stageLabels, stageAssignments } from '../data/stage-tracker';
+import ToolCard from './ToolCard.astro';
+---
+
+<div class="board">
+	{
+		stages.map((stage) => {
+			const assignments = stageAssignments.filter((a) => a.stage === stage);
+			return (
+				<section class="column">
+					<h2>
+						{stageLabels[stage]} <span class="count">({assignments.length})</span>
+					</h2>
+					<div class="column-cards">
+						{assignments.map((assignment) => {
+							const tool = tools.find((t) => t.id === assignment.toolId)!;
+							const maintainer = teams.find((t) => t.id === assignment.maintainerTeamId);
+							return (
+								<ToolCard tool={tool} assignment={assignment} maintainerName={maintainer?.name ?? 'Unassigned'} />
+							);
+						})}
+					</div>
+				</section>
+			);
+		})
+	}
+</div>
+
+<style>
+	.board {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+		gap: var(--space-4);
+		align-items: start;
+	}
+
+	.column h2 {
+		font-size: var(--text-base);
+		margin: 0 0 var(--space-3);
+	}
+
+	.count {
+		color: var(--color-text-muted);
+		font-weight: 400;
+	}
+
+	.column-cards {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-3);
+	}
+</style>
