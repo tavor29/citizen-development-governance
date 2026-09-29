@@ -10,6 +10,8 @@
 	--color-border: #e2e8f0;
 
 	--font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+	/* Accent serif (homepage hero). System faces only, no webfont request. */
+	--font-serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
 
 	--text-xs: 0.8rem;
 	--text-sm: 0.9rem;
@@ -28,6 +30,19 @@
 
 	--max-width: 72rem;
 	--radius: 0.5rem;
+
+	/* Chart colors (Block 5), dataviz skill's validated default palette,
+	   slots 1-2 for categorical series, fixed status colors for state.
+	   Re-validate with scripts/validate_palette.js before adding more slots. */
+	--chart-series-1: #2a78d6;
+	--chart-series-2: #eb6834;
+	--chart-ordinal-1: #86b6ef;
+	--chart-ordinal-2: #2a78d6;
+	--chart-ordinal-3: #104281;
+	--chart-status-good: #0ca30c;
+	--chart-status-warning: #fab219;
+	--chart-status-serious: #ec835a;
+	--chart-status-critical: #d03b3b;
 }
 
 *,
